@@ -1,2 +1,2 @@
 # LeetCodeAprilChallenge
-Coding challenge from LeetCode
+30-Day LeetCoding Challenge
