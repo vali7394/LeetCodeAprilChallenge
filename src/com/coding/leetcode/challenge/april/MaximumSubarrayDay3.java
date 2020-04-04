@@ -20,7 +20,7 @@ public class MaximumSubarrayDay3 {
 
     public static void main(String[] args) {
         int input[] = {-2,1,-3,4,-1,2,1,-5,4};
-        System.out.println(maxSum(input));
+        System.out.println(maxSumAlt(input));
     }
 
 
@@ -38,6 +38,18 @@ public class MaximumSubarrayDay3 {
             }
         }
 
+        return maxSum;
+    }
+
+    private static int maxSumAlt(int[] input){
+        int maxSum = Integer.MIN_VALUE;
+        int currenSum = 0;
+
+        for(int i=0; i < input.length;i++) {
+            currenSum = currenSum+input[i];
+            maxSum = Math.max(maxSum,currenSum);
+            currenSum = Math.max(currenSum,0);
+        }
         return maxSum;
     }
 
