@@ -36,7 +36,7 @@ public class GroupAnagramsDay6 {
 
 
     // Time complexity O(n*mlogm) - n -> No of words and m-> size of the longest String in the array
-    // space - O(n)
+    // space - O(nm)
     private static void sortingApproach(String[] words){
 
         Map<String, List<String>> anagrams = new HashMap<>(words.length);
