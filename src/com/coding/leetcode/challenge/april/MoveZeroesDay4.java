@@ -32,25 +32,16 @@ public class MoveZeroesDay4 {
     // Two pointer version of my own
     private static int[] moveZeros(int[] input) {
         int i = 0;
-        while (i < input.length - 1) {
-            int move = i + 1;
-            if (input[i] != 0) {
-                i++;
-                continue;
-            } else if (input[i] == 0 && input[move] != 0) {
-                swap(input, i, move);
-                i++;
-                continue;
-            } else {
-                while (move < input.length && input[i] == 0 && input[move] == 0) {
-                    move++;
+        int right = 0;
+        int left = 0;
+        while (right<input.length) {
+                if(input[right]==0) {
+                    right++;
+                } else {
+                    swap(input, right, left);
+                    right++;
+                    left++;
                 }
-                if (move >= input.length) {
-                    return input;
-                }
-                swap(input, i, move);
-                i++;
-            }
         }
         return input;
     }

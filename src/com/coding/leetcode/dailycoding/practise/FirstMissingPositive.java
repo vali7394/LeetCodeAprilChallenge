@@ -9,9 +9,6 @@ package com.coding.leetcode.dailycoding.practise;/*
  *  Example 1:
  *  Input[1,2,3,5,6,7,8,9]
  *
- *
- *
- *
  * unsorted
  * Example 1:
  * Input: [1,2,0]
