@@ -15,7 +15,7 @@ public class ProductOfArrayExceptSelf {
 
     public static void main(String[] args) {
         int[] input = {1,2,3,4};
-        for(int i : productArrayExceptItself(input)){
+        for(int i : productArrayExceptItselfConstantSpace(input)){
             System.out.println(i);
         }
     }
@@ -43,6 +43,26 @@ public class ProductOfArrayExceptSelf {
 
         for(int i=0 ; i<size;i++){
             result[i] = leftProduct[i]*rightProduct[i];
+        }
+        return result;
+    }
+
+    // time - O(2n) space - O(1)
+    private static int[] productArrayExceptItselfConstantSpace(int[] input){
+        if(input.length==0){
+            return new int[]{};
+        }
+        int size = input.length;
+        int result[] = new int[size];
+        result[0] = 1;
+        for(int i=1; i<size;i++){
+            result[i] = result[i-1] * input[i-1];
+        }
+
+        int r = 1;
+        for(int i=size-1;i>=0;i--){
+            result[i] = result[i]*r;
+            r=r*result[i];
         }
         return result;
     }
