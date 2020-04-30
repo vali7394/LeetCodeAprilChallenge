@@ -47,10 +47,9 @@ public class BinaryTreeMaximumPathSumSolution {
         return root.val + Math.max(leftGain, rightGain);
     }
 }
-
-class TreeNode {
+ class TreeNode {
 
     int val;
     TreeNode left;
     TreeNode right;
-}
+    }
