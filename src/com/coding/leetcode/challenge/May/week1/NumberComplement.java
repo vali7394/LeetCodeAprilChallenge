@@ -38,7 +38,7 @@ public class NumberComplement {
        System.out.println(numCompliment(10));
     }
 
-
+    // Time Complexity - O(1)
     private static int numCompliment(int num){
         int result = 0;
         int i=0;
