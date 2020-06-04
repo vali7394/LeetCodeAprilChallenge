@@ -1,6 +1,6 @@
 package com.coding.leetcode.dailycoding.practise;/*
   @created 4/4/20
-  @Author b008245 - Meeravali Shaik 
+  @Author  - Meeravali Shaik
  */
 
 import java.util.Arrays;

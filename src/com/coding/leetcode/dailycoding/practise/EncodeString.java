@@ -1,6 +1,6 @@
 package com.coding.leetcode.dailycoding.practise;/*
   @created 5/15/20
-  @Author b008245 - Meeravali Shaik 
+  @Author  - Meeravali Shaik
  */
 
 public class EncodeString {

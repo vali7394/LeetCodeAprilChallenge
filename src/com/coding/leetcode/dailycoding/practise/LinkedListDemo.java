@@ -53,6 +53,23 @@ public class LinkedListDemo {
         return oddList.head;
     }
 
+    public ListNode segregateLinkedListBETTER(ListNode node){
+
+        ListNode oddHead = node;
+        ListNode evenHead = node.next;
+
+        ListNode oddTemp = node;
+        ListNode evenTemp = evenHead;
+        while (evenTemp!=null && evenTemp.next!=null){
+            oddTemp.next = oddTemp.next.next;
+            evenTemp.next = evenTemp.next.next;
+            oddTemp = oddTemp.next;
+            evenTemp = evenTemp.next;
+        }
+        oddTemp.next = evenHead;
+        return oddHead;
+    }
+
     public static void main(String[] args) {
         LinkedListDemo listDemo = new LinkedListDemo();
         listDemo.addNode(10);
@@ -60,7 +77,7 @@ public class LinkedListDemo {
         listDemo.addNode(30);
         listDemo.addNode(40);
         listDemo.addNode(50);
-        ListNode temp = listDemo.segregateLinkedList(listDemo.head);
+        ListNode temp = listDemo.segregateLinkedListBETTER(listDemo.head);
         listDemo.printLinkedList(temp);
     }
 
