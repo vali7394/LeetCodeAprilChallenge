@@ -1,4 +1,6 @@
-package com.coding.leetcode.dailycoding.practise;/*
+package com.coding.leetcode.dailycoding.practise;
+
+/*
   @created 5/17/20
   @Author  - Meeravali Shaik
  */

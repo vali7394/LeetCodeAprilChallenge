@@ -3,7 +3,63 @@ package com.coding.leetcode.challenge.May.week5;/*
   @Author  - Meeravali Shaik
  */
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class CourseSchedule {
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        int[] inDegree = new int[numCourses];
+        Map<Integer, List<Integer>> graph = buildGraph(prerequisites);
+        var courseQueue = new LinkedList<Integer>();
+
+        for(int k : graph.keySet()){
+            List<Integer> dependentCourses = graph.get(k);
+            for(int j : dependentCourses){
+                inDegree[j] = inDegree[j]+1;
+            }
+        }
+
+        for(int i=0;i<numCourses ;i++){
+            if(inDegree[i]==0){
+                courseQueue.offer(i);
+            }
+        }
+        if(courseQueue.isEmpty()){
+            return false;
+        }
+        while (!courseQueue.isEmpty()){
+            int course = courseQueue.poll();
+            List<Integer> depenCourses = graph.get(course);
+            inDegree[course] = -1;
+            if(depenCourses!=null) {
+                for (int i : depenCourses) {
+                    inDegree[i] = inDegree[i] - 1;
+                    if (inDegree[i] == 0) {
+                        courseQueue.offer(i);
+                    }
+                }
+            }
+        }
+
+        for(int i : inDegree){
+            if(i!=-1){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    private static Map<Integer, List<Integer>> buildGraph(int[][] prerequisites){
+        return Stream.of(prerequisites).collect(Collectors.groupingBy(result -> result[0],
+            Collectors.mapping(result -> result[1], Collectors.toList())));
+    }
+
 
 }
 

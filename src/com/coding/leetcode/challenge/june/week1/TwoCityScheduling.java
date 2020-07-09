@@ -1,4 +1,4 @@
-package com.coding.leetcode.challenge.june;/*
+package com.coding.leetcode.challenge.june.week1;/*
   @created 6/3/20
   @Author  - Meeravali Shaik
  */
