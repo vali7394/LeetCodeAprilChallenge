@@ -4,6 +4,7 @@ package com.coding.leetcode.amazon.online.assement;/*
  */
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PartitionLabels {
     public List<Integer> partitionLabels(String S) {
@@ -39,5 +40,34 @@ public class PartitionLabels {
     public static void main(String[] args) {
         PartitionLabels labels = new PartitionLabels();
         labels.partitionLabels("ababcbacadefegdehijhklij");
+    }
+
+    public int[][] merge(int[][] intervals) {
+        if(intervals==null || intervals.length==0){
+            return intervals;
+        }
+
+        Arrays.sort(intervals, Comparator.comparingInt(i1->i1[0]));
+        List<int[]> result = new ArrayList<>();
+
+
+        int[] current = intervals[0];
+
+        for(int i=1; i<intervals.length; i++){
+            int[] temp = intervals[i];
+
+            if(current[1]>=temp[1]){
+                current[0] = Math.min(temp[0],current[0]);
+                current[1] = Math.min(temp[1],current[1]);
+            }
+            else{
+                result.add(current);
+                current = temp;
+            }
+
+
+        }
+        return result.toArray(new int[result.size()][]);
+
     }
 }

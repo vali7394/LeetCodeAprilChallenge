@@ -3,6 +3,8 @@ package com.coding.leetcode.amazon.online.assement;/*
   @Author ** - Meeravali Shaik
  */
 import java.util.*;
+import java.util.stream.Collectors;
+
 public class CriticalRouters {
 
 
@@ -15,23 +17,32 @@ public class CriticalRouters {
 
      */
 
+    public static void main(String[] args) {
+        int[][] connections = new int[][]{{0,1},{1,2},{2,0},{1,3}};
+        CriticalRouters routers = new CriticalRouters();
+        List<List<Integer>> inpit = Arrays.stream(connections)
+            .map(i -> Arrays.stream(i).boxed().collect(Collectors.toList()))
+            .collect(Collectors.toList());
+        routers.criticalConnections(4,inpit);
+    }
+
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
         Map<Integer,List<Integer>> graph = buildGraph(n, connections);
         boolean[] visited = new boolean[n];
         List<List<Integer>> criticalConns = new ArrayList<>();
         int[] visitedTimes = new int[n];
-        int[] timeTracker = new int[1];
-        findCriticalConnections(graph,0,criticalConns,visited,timeTracker,visitedTimes,-1);
+        findCriticalConnections(graph,0,criticalConns,visited,0,visitedTimes,-1);
         return criticalConns;
     }
 
 
     private void findCriticalConnections(Map<Integer, List<Integer>> graph, int node,
-        List<List<Integer>> criticalConns, boolean[] visited, int[] timeTracker, int[] visitedTimes,
+        List<List<Integer>> criticalConns, boolean[] visited, int timeTracker, int[] visitedTimes,
         int parent) {
         visited[node] = true;
-        visitedTimes[node] = timeTracker[0]++;
+        visitedTimes[node] = timeTracker;
         int lowTime = visitedTimes[node];
+        timeTracker++;
         List<Integer> connections = graph.get(node);
         if (connections != null && !connections.isEmpty()) {
             for (int dest : connections) {
